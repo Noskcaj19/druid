@@ -71,6 +71,7 @@ You can find its changes [documented below](#070---2021-01-01).
 - `EventCtx::submit_notification_without_warning` ([#2141] by [@xarvic])
 - `WidgetPod::requested_layout` ([#2145] by [@xarvic])
 - Make `Parse` work better with floats and similar types ([#2148] by [@superfell])
+- `Event::WindowFocus(bool)` to notify widgets of window focus changes ([#2016] by [@ForLoveOfCats])
 
 ### Changed
 

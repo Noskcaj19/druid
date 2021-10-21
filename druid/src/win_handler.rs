@@ -1016,6 +1016,14 @@ impl<T: Data> WinHandler for DruidHandler<T> {
 
     fn got_focus(&mut self) {
         self.app_state.window_got_focus(self.window_id);
+
+        let event = Event::WindowFocus(true);
+        self.app_state.do_window_event(event, self.window_id);
+    }
+
+    fn lost_focus(&mut self) {
+        let event = Event::WindowFocus(false);
+        self.app_state.do_window_event(event, self.window_id);
     }
 
     fn timer(&mut self, token: TimerToken) {
