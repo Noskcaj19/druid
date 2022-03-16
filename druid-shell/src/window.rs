@@ -279,6 +279,11 @@ impl WindowHandle {
         self.0.bring_to_front_and_focus()
     }
 
+    #[cfg(target_os = "darwin")]
+    pub fn activate(&self) {
+        self.0.activate()
+    }
+
     /// Request that [`prepare_paint`] and [`paint`] be called next time there's the opportunity to
     /// render another frame. This differs from [`invalidate`] and [`invalidate_rect`] in that it
     /// doesn't invalidate any part of the window.

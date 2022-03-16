@@ -1037,6 +1037,16 @@ impl WindowHandle {
         }
     }
 
+    pub fn activate(&self) {
+        unsafe {
+            let class = class!(NSApplication);
+            let application: id = msg_send![class, sharedApplication];
+            let () = msg_send![application, activateIgnoringOtherApps: YES];
+            let window: id = msg_send![*self.nsview.load(), window];
+            let () = msg_send![window, performSelectorOnMainThread: sel!(makeKeyAndOrderFront:) withObject: nil waitUntilDone: NO];
+        }
+    }
+
     pub fn request_anim_frame(&self) {
         unsafe {
             // TODO: synchronize with screen refresh rate using CVDisplayLink instead.
